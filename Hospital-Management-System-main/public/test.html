@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Connection</title>
+</head>
+<body>
+    <h1>Hospital Management System - Connection Test</h1>
+    <button onclick="testConnection()">Test Database Connection</button>
+    <div id="result"></div>
+
+    <script>
+        async function testConnection() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                // Test authentication
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'admin',
+                        password: 'password'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const token = data.token;
+                    console.log('Login successful, token:', token);
+                    
+                    // Test patient fetch
+                    const patientsResponse = await fetch('http://localhost:3000/api/patients?limit=5', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    const patientsData = await patientsResponse.json();
+                    
+                    resultDiv.innerHTML = `
+                        <h3>✅ Connection Successful!</h3>
+                        <p>Logged in as: ${data.user.username}</p>
+                        <p>Found ${patientsData.patients ? patientsData.patients.length : 0} patients</p>
+                        <pre>${JSON.stringify(patientsData, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<h3>❌ Login Failed</h3><p>${data.error}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<h3>❌ Error</h3><p>${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

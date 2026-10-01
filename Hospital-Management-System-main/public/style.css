@@ -1,0 +1,307 @@
+/*
+ * New Stylesheet inspired by the "Preclinic" template
+ */
+
+:root {
+    --sidebar-bg: #ffffff;
+    --sidebar-link-color: #555;
+    --sidebar-link-hover: #0d6efd;
+    --sidebar-link-active: #0d6efd;
+    --sidebar-link-active-bg: #f0f7ff;
+    --sidebar-heading: #888;
+    
+    --top-bar-bg: #ffffff;
+    --top-bar-border: #e9ecef;
+    
+    --main-bg: #f4f7fa; /* Light gray content background */
+    --card-bg: #ffffff;
+    --card-border: #e9ecef;
+    --text-color: #333;
+    
+    --accent-blue: #0d6efd;
+    --status-available-bg: #d4edda;
+    --status-available-text: #155724;
+    --status-unavailable-bg: #f8d7da;
+    --status-unavailable-text: #721c24;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-color);
+}
+
+/* Main Layout: Sidebar + Page Container */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--card-border);
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* This new wrapper holds the top bar and main content */
+.page-container {
+    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height */
+}
+
+.top-bar {
+    height: 70px;
+    min-height: 70px;
+    background-color: var(--top-bar-bg);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--top-bar-border);
+}
+
+.top-bar-search {
+    position: relative;
+    width: 300px;
+}
+.top-bar-search .form-control {
+    background-color: var(--main-bg);
+    border: none;
+    padding-left: 2.5rem;
+}
+.top-bar-search .fa-search {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.top-bar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto; /* Content area scrolls, sidebar/topbar stay */
+}
+
+/* Sidebar Styling (Template Inspired) */
+.sidebar-header {
+    color: #000;
+    padding: 0 1.5rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+.sidebar-header .logo {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    margin-right: 0.5rem;
+}
+
+.sidebar-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--sidebar-heading);
+    padding: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.sidebar .nav-link {
+    color: var(--sidebar-link-color);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    margin-bottom: 2px;
+}
+.sidebar .nav-link:hover {
+    color: var(--sidebar-link-hover);
+    background: var(--sidebar-link-active-bg);
+}
+
+.sidebar .nav-link[data-bs-toggle="collapse"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Arrow icon for collapse */
+.sidebar .nav-link[data-bs-toggle="collapse"]::after {
+    content: '\f0da'; /* FontAwesome chevron-right */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    transition: transform 0.2s ease;
+}
+.sidebar .nav-link[data-bs-toggle="collapse"]:not(.collapsed)::after {
+    transform: rotate(90deg); /* Point down when open */
+}
+
+/* Active link style */
+.sidebar .nav-link.active {
+    color: var(--sidebar-link-active);
+    font-weight: 600;
+    background: var(--sidebar-link-active-bg);
+}
+
+.sidebar .nav-link .fa-fw {
+    width: 1.25rem;
+    margin-right: 0.5rem;
+    color: #888;
+}
+.sidebar .nav-link.active .fa-fw {
+    color: var(--sidebar-link-active);
+}
+
+/* Collapsed Submenu */
+.sidebar-submenu {
+    padding-left: 2.25rem; /* Indent */
+}
+.sidebar-submenu .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+.sidebar-submenu .nav-link.active {
+    font-weight: 500;
+    color: var(--sidebar-link-active);
+    background: none;
+}
+.sidebar-submenu .nav-link:hover {
+    color: var(--sidebar-link-hover);
+    background: none;
+}
+
+
+.sidebar-footer {
+    border-top: 1px solid var(--card-border);
+    padding: 1.5rem;
+    margin-top: auto;
+    background: var(--sidebar-bg);
+}
+.sidebar-footer .nav-link {
+    padding: 0.5rem 0;
+}
+.sidebar-footer .nav-link:hover { background: none; }
+
+/* Main Content Styling */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: var(--card-bg);
+    height: 100%; /* Fixes alignment: makes cards in a row same height */
+}
+.card-header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--card-border);
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Fix for row alignment */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+/* End of row alignment fix */
+
+.btn-primary {
+    border-radius: 6px;
+}
+
+/* Table Styling */
+.table-wrapper {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+}
+.table {
+    margin-bottom: 0;
+}
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid var(--card-border);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.table tbody tr {
+    background-color: var(--card-bg);
+}
+.table tbody td {
+    vertical-align: middle;
+    padding: 1rem;
+    border-top: 1px solid var(--card-border);
+}
+.table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.status-scheduled, .status-partially-paid { background-color: #fff3cd; color: #856404; }
+.status-confirmed { background-color: #d1ecf1; color: #0c5460; }
+.status-completed, .status-paid, .status-available { background-color: var(--status-available-bg); color: var(--status-available-text); }
+.status-cancelled, .status-unpaid, .status-unavailable { background-color: var(--status-unavailable-bg); color: var(--status-unavailable-text); }
+
+
+/* Login Screen */
+.login-container {
+    min-height: 100vh;
+    background-color: var(--main-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-card {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility */
+.hidden { display: none !important; }
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,22 @@
+-- Insert additional doctors with various specializations
+INSERT INTO doctors (first_name, last_name, specialization, phone, email) VALUES
+    ('Sarah', 'Johnson', 'Pediatrics', '+1-555-0123', 'sarah.johnson@hospital.com'),
+    ('James', 'Williams', 'Cardiology', '+1-555-0124', 'james.williams@hospital.com'),
+    ('Emma', 'Brown', 'Neurology', '+1-555-0125', 'emma.brown@hospital.com'),
+    ('Michael', 'Davis', 'Orthopedics', '+1-555-0126', 'michael.davis@hospital.com'),
+    ('Lisa', 'Miller', 'Dermatology', '+1-555-0127', 'lisa.miller@hospital.com'),
+    ('Robert', 'Wilson', 'Internal Medicine', '+1-555-0128', 'robert.wilson@hospital.com'),
+    ('Jennifer', 'Taylor', 'Ophthalmology', '+1-555-0129', 'jennifer.taylor@hospital.com'),
+    ('David', 'Anderson', 'ENT', '+1-555-0130', 'david.anderson@hospital.com'),
+    ('Mary', 'Thomas', 'Gynecology', '+1-555-0131', 'mary.thomas@hospital.com'),
+    ('John', 'Moore', 'Psychiatry', '+1-555-0132', 'john.moore@hospital.com'),
+    ('Patricia', 'Martin', 'Pediatric Surgery', '+1-555-0133', 'patricia.martin@hospital.com'),
+    ('Richard', 'Lee', 'Cardiothoracic Surgery', '+1-555-0134', 'richard.lee@hospital.com'),
+    ('Sandra', 'Garcia', 'Endocrinology', '+1-555-0135', 'sandra.garcia@hospital.com'),
+    ('Joseph', 'Rodriguez', 'Gastroenterology', '+1-555-0136', 'joseph.rodriguez@hospital.com'),
+    ('Nancy', 'Martinez', 'Oncology', '+1-555-0137', 'nancy.martinez@hospital.com'),
+    ('Steven', 'Hernandez', 'Urology', '+1-555-0138', 'steven.hernandez@hospital.com'),
+    ('Elizabeth', 'Young', 'Rheumatology', '+1-555-0139', 'elizabeth.young@hospital.com'),
+    ('Christopher', 'King', 'Pulmonology', '+1-555-0140', 'christopher.king@hospital.com'),
+    ('Margaret', 'Wright', 'Nephrology', '+1-555-0141', 'margaret.wright@hospital.com'),
+    ('Daniel', 'Lopez', 'General Surgery', '+1-555-0142', 'daniel.lopez@hospital.com');
